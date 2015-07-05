@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html>
+<head>	
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<title>酒店信息</title>
+	<link href="/static/css/reset.css" rel="stylesheet" />
+    <link href="/static/css/style.css" rel="stylesheet" />
+    <noscript>
+        <link rel="stylesheet" href="/static/css/mobile.min.css" />
+    </noscript>
+    <script src="/static/js/jquery.excoloSlider.js"></script>
+    <link href="/static/css/jquery.excoloSlider.css" rel="stylesheet" />
+    <script>
+        var ADAPT_CONFIG = {
+            path: "/static/css/",
+            dynamic: true,
+            range: [
+                '0px    to 760px  = mobile.min.css',
+                '760px  to 980px  = 720.min.css',
+                '980px            = 960.min.css'
+            ]
+        };
+    </script>
+    <script src="/static/js/adapt.min.js"></script>
+    <script>
+        $(function () {
+            $("#sliderA").excoloSlider();
+        });
+    </script>
+</head>
+<body>
+<h1>{{hotel['name']}}</h1>
+	<div class="container_12">
+	<div class="grid_8">
+			<div id="sliderA" class="slider">
+				{% for pic in hotel['pic']%}
+				<img src="/static/img/{{pic}}" />
+				{% end %}
+			</div>
+		</div>
+	</div>
+<p>联系电话：{{hotel['phone']}}</p>
+<p>地址：{{hotel['address']}}</p>
+<p>简介：{{hotel['introduction']}}</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>订今晚的酒店</title>
+	<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/bootstrap-slider/4.10.0/css/bootstrap-slider.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/awesome-bootstrap-checkbox/v0.2.3/awesome-bootstrap-checkbox.min.css" rel="stylesheet">
+	<link href="/static/css/userbooking.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<form role="form" class="form-signin">
+        <h2 class="form-signin-heading">订房要求</h2>
+		<div class="form-group">
+			<div class="row">
+			<label>价格不超过 </label>
+			<span id="inputPriceVal">300</span>
+			<label> 元</label>
+			</div>
+			<div class="row">
+			<input id="inputPrice" type="text" data-slider-ticks="[0, 200, 400, 600, 800, 1000]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels="['$0', '￥200', '￥400', '￥600', '￥800', '￥1000']" data-slider-value="300"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+			<label>房型选择 </label>
+			</div>
+			<div class="row">
+			<div class="radio radio-info radio-inline">
+                        <input type="radio" id="radioRoomType1" value="标准间" name="radioInline" checked>
+                        <label for="radioRoomType1"> 标准间 </label>
+                    	</div>
+	                <div class="radio radio-danger radio-inline">
+                        <input type="radio" id="radioRoomType2" value="大床房" name="radioInline" >
+                        <label for="radioRoomType2"> 大床房 </label>
+        	        </div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+			<label>中心位置</label><input id="btnMap" class="btn btn-xs btn-warning" type="button" value="选择其他地点" />
+			</div>
+			<div class="row">
+                        <span id="address"> 未知 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+			<label>搜索半径</label>
+			<span id="inputMaxRadiusVal">5</span>
+			<label> 公里范围内</label>
+			</div>
+			<div class="row">
+			<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0.2" data-slider-max="5" data-slider-step="0.1" data-slider-value="1"/>
+			</div>
+		</div>
+    		<input id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="button" value = "提交订房请求" />
+	</form>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-slider/4.10.0/bootstrap-slider.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&libraries=convertor"></script>
+<script src="//cdn.bootcss.com/sockjs-client/1.0.0/sockjs.min.js"></script>
+<script src="/static/js/userbooking.js"></script>
+</body>
+</html>

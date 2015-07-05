@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>酒店信息</title>
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<style>
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+	width: 70%;
+	margin: auto;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<h1>{{hotel['name']}}</h1>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			{% for idx in enumerate(hotel['pic']) %}
+			{% if idx==0 %}
+			<li data-target="#myCarousel" data-slide-to="{{idx}}" class="active"></li>
+			{% else %}
+			<li data-target="#myCarousel" data-slide-to="{{idx}}"></li>
+			{% end %}
+			{% end %}
+		</ol>
+
+		<div class="carousel-inner" role="listbox">
+			{% for idx, pic in enumerate(hotel['pic']) %}
+				{% if idx==0 %}
+				<div class="item active">
+				{% else %}
+				<div class="item">
+				{% end %}
+				<img src="/static/img/{{pic}}" alt="酒店图片" width="460" height="345">
+				</div>
+			{% end %}
+		</div>
+
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+		</div>
+	</div>
+	<br>
+	<label>联系电话：</label><span>{{hotel['phone']}}</span>
+	<br>
+	<label>地址：</label><span>{{hotel['address']}}</span>
+	<br>
+	<label>简介：</label><span>{{hotel['introduction']}}</span>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>查看已经报价的订单</title>
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/hotelwaitorder.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <form role="form" class="form-signin">
+        <h2 class="form-signin-heading">{{hotel['name']}}</h2>
+        <div class="form-group">
+            <div class="row">
+                <a href="/tor/hotel/wait">新订单（{{initBidCnt}}）</a>
+                <span>已报价订单（{{updateBidCnt}}）</span>
+                <a href="/tor/hotel/bid/accepted">抢单成功 {{acceptedBidCnt}} 次</a>
+                <a href="/tor/hotel/bid/abandoned">抢单失败 {{abandonedBidCnt}} 次</a>
+            </div>
+        </div>
+        {% for showorder in showorders %}
+        <div class="form-group">
+            <div class="row">
+                <label>用户昵称：</label><span>{{showorder['nickname']}}</span>
+                <label>期望价格：</label><span>{{showorder['price']}}</span>
+                <label>要求房型：</label><span>{{showorder['roomtype']}}</span>
+            </div>
+            <div class="row">
+                <label>最低报价：</label><input type="text" id="{{showorder['bidid']}}" value="{{showorder['bidprice']}}"/>
+                <input type="button" class="btn btn-sm btn-primary" name="btnUpdate" value = "更新价格" orderid="{{showorder['orderid']}}" bidid="{{showorder['bidid']}}" />
+            </div>
+        </div>
+        {% end %}
+        <div class="form-group">
+            <a href="/tor/hotel/logout">登出</a>
+        </div>
+    </form>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/sockjs-client/1.0.0/sockjs.min.js"></script>
+<script src="/static/js/hotelupdatebid.js"></script>
+</body>
+</html>

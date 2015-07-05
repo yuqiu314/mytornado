@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>订今晚的酒店</title>
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/userwaitbids.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<form role="form" class="form-signin">
+		<h2 class="form-signin-heading">您有未确认的订单</h2>
+		<div class="form-group">
+			<div class="row">
+				<label>预期价格：</label><span>{{price}}</span><label>元</label>
+				<label>要求房型：</label><span>{{roomtype}}</span>
+				<input type="button" class="btn btn-sm btn-warning" id="btnCancel" value="撤销订单" orderid="{{orderid}}"/>
+			</div>
+		</div>
+		<p>已通知离您最近的10家酒店，请等待他们的实时报价...</p>
+		{% for bid in bids %}
+		<div class="form-group">
+			<div class="row">
+				<label>酒店：</label><a href="/tor/hotel/info?hotel_id={{bid['hotel_id']}}">{{bid['hotel_name']}}</a>
+			</div>
+			<div class="row">
+				<label>报价：</label><span>{{bid['price']}}</span>
+				<input type="button" class="btn btn-sm btn-primary" name="btnConfirm" value="确认交易" bidid="{{bid['_id']}}"/>
+			</div>
+		</div>
+		{% end %}
+	</form>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-slider/4.10.0/bootstrap-slider.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdn.bootcss.com/sockjs-client/1.0.0/sockjs.min.js"></script>
+<script src="/static/js/userwaitbids.js"></script>
+</body>
+</html>
